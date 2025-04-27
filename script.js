@@ -128,7 +128,7 @@ function gameOver() {
 
 //calling Event
 updateFood()
- high_score.innerHTML = `high-score: ${localStorage.getItem("highScore")}`
+ high_score.innerHTML = `high-score: ${localStorage.getItem("highScore")??'0'}`
 document.addEventListener("keyup", changeDirection);
 movingInterval = setInterval(movingSnake, 100);
 
