@@ -7,8 +7,11 @@ const controls = document.querySelectorAll(".controls > div ");
 const value_display = document.querySelector(".value-display");
 const speed_slider = document.querySelector(".speed-control [type='range']");
 const speed_div = document.querySelector(".speed-control");
-
-
+//sounds
+const foodSound = new Audio('music/food.mp3');
+const gameOverSound = new Audio('music/gameover.mp3');
+const moveSound = new Audio('music/move.mp3');
+const musicSound = new Audio('music/music.mp3');
 
 
 
@@ -47,7 +50,7 @@ function movingSnake() {
   let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 
   if (snakeX === foodX && snakeY === foodY) {
-    
+    foodSound.play();
     updateFood();
     snakeBody.push([foodX, foodY]);
     score += 1;
@@ -87,6 +90,7 @@ for (let i = snakeBody.length - 1; i > 0; i--) {
  
 
   if (snakeX === 0 || snakeY === 0 || snakeX === max || snakeY === max) {
+    gameOverSound.play();
     gameOver()
   }
 
@@ -95,6 +99,7 @@ for (let i = snakeBody.length - 1; i > 0; i--) {
     html += `<div class="snake" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
 
     if(i !== 0 && snakeBody[0][0] === snakeBody[i][0] && snakeBody[0][1] === snakeBody[i][1]) {
+      gameOverSound.play();
        gameOver()
     }
   }
@@ -108,7 +113,7 @@ for (let i = snakeBody.length - 1; i > 0; i--) {
 }
 
 const changeDirection = (e) => {
-  
+  moveSound.play();
   if(!moving && isSpeedChanged) {
     console.log("rerunnig")
     setInterval(movingSnake, speed);
@@ -134,7 +139,7 @@ const changeDirection = (e) => {
 //Helper function
 
 function gameOver() {
-  alert("game over !!!!");
+  alert("game over !!!!  Your Score is : " + score);
   clearInterval(movingInterval);
   location.reload()
 }
