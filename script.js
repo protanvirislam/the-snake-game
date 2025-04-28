@@ -145,6 +145,8 @@ function gameOver() {
 }
 
 function changeSpeed(e) {
+
+
   if (e.key === "ArrowLeft" || e.key === "ArrowRight" ||  e.key === "ArrowUp" ||  e.key === "ArrowDown" ) {
    e.preventDefault
   }
@@ -153,13 +155,15 @@ function changeSpeed(e) {
     clearInterval(movingInterval)
   }
   
+
    
    speed =Math.abs( +speed_slider.value);
- 
+   
     isSpeedChanged = true;
-
+    console.log("inital change speed")
     switch (speed) {
       case 500:
+        console.log("inital change speed")
         value_display.textContent = "1"  
         break;
         case 400:
@@ -174,8 +178,11 @@ function changeSpeed(e) {
         case 100:
           value_display.textContent = "5"  
           break;
-     
+       
+
     }
+
+    
 }
 
 
