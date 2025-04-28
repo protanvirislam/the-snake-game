@@ -26,7 +26,7 @@ let velocityX = 0,
   velocityY = 0;
 
 let snakeBody = [];
-let speed = 500;
+let speed = 200;
 
 //update random Food
 function updateFood() {
